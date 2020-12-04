@@ -1,0 +1,36 @@
+<div class="main-div">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> modifier un achat  pour les travaux</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="updateTerrainForm" (ngSubmit)="onSubmit()" novalidate *ngIf="updateTerrainForm">
+      <div class="well">
+        <mat-card>
+          <div class="achat">
+            <mat-form-field>
+              <input  matInput  type="text" placeholder="Libelle" formControlName="libelle">
+            </mat-form-field>
+            <br>
+            <section class="example-section" formControlName="paye">
+              <mat-checkbox>Payer</mat-checkbox>
+            </section>
+            <hr>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <button mat-raised-button class="boutonEnr" type="submit"> Modifier
+              </button>
+              <button mat-raised-button class="boutonAnn" type="button" type="reset">Annuler
+              </button>
+            </div>
+          </div>
+
+        </mat-card>
+
+      </div>
+    </form>
+  </mat-card>
+
+</div>
+
+

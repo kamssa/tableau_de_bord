@@ -1,0 +1,68 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-rose">
+            <h4 class="card-title">La liste des prospect</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <button mat-button (click)="openDialog()"> Ajouter un prospect </button>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field >
+                <input matInput (keyup)="applyFilter($event)"  placeholder="Recherche..." #input>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="nomComplet">
+              <th mat-header-cell *matHeaderCellDef> Nom et Prenom </th>
+              <td mat-cell *matCellDef="let prospect"> {{prospect.nomComplet}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="telephone">
+              <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+              <td mat-cell *matCellDef="let prospect">{{prospect.adresse.telephone}}</td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="update">
+              <th mat-header-cell *matHeaderCellDef> Update </th>
+              <td mat-cell *matCellDef="let prospect">
+                <button mat-icon-button color="accent" (click)="redirectToUpdate(prospect.id)">
+                  <mat-icon class="mat-18">system_update</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="client">
+              <th mat-header-cell *matHeaderCellDef> Mettre en client </th>
+              <td mat-cell *matCellDef="let prospect">
+                <button mat-icon-button color="accent" (click)="prospectTClientUpdate(prospect.id)">
+                  <mat-icon class="mat-18">system_update</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Delete </th>
+              <td mat-cell *matCellDef="let prospect">
+                <button mat-icon-button color="warn" (click)="redirectToDelete(prospect.id)">
+                  <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">Pas de donnée "{{input.value}}"</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
