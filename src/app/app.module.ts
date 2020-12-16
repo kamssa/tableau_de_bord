@@ -47,6 +47,9 @@ import { AddProspectComponent } from './prospect/add-prospect/add-prospect.compo
 import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material/core';
 import { MatConfirmDialogComponent } from './service/shared/mat-confirm-dialog/mat-confirm-dialog.component';
 import { AddImmobilierComponent } from './immobilier/add-immobilier/add-immobilier.component';
+import { RoleComponent } from './role/role/role.component';
+import { PubportailComponent } from './pubportail/pubportail/pubportail.component';
+import { AddpubportailComponent } from './pubportail/addpubportail/addpubportail.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +86,10 @@ import { AddImmobilierComponent } from './immobilier/add-immobilier/add-immobili
     ListeMembreComponent,
     AddProspectComponent,
     MatConfirmDialogComponent,
-    AddImmobilierComponent
+    AddImmobilierComponent,
+    RoleComponent,
+    PubportailComponent,
+    AddpubportailComponent
   ],
   imports: [
     AppRoutingModule,

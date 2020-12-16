@@ -47,7 +47,7 @@ export class AuthGuardService implements  CanActivate {
         this.authenticationState.next(true);
         return true;
       } else {
-        localStorage.remove('currentUser');
+     //   localStorage.remove('currentUser');
         localStorage.clear();
         return false;
       }
