@@ -102,7 +102,7 @@ export class AddFlashTerrainComponent implements OnInit {
         this.progress = 0;
         this.currentFile = this.selectedFiles.item(0);
         const formData = new FormData();
-        formData.append('image_flash', this.currentFile);
+        formData.append('multipartFile', this.currentFile);
         console.log('formdata', formData);
         this.flashService.uploadImage(formData, this.flahTerrainId).subscribe(
           event => {
