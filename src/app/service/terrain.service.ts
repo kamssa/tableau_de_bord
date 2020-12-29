@@ -47,7 +47,7 @@ export class TerrainService {
 
   }
   uploadImage(formData, id): Observable<HttpEvent<any>> {
-    const req = new HttpRequest('POST', `${environment.apiUrl}/api/imageTerrain/?id=${id}`, formData, {
+    const req = new HttpRequest('POST', `${environment.apiUrl}/api/upload/?id=${id}`, formData, {
       reportProgress: true,
       responseType: 'json'
     });

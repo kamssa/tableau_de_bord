@@ -48,7 +48,7 @@
                 </div>
               </div>
               <label class="btn btn-default">
-                <input type="file" (change)="selectFile($event)" />
+                <input type="file" (change)="selectFile($event)" accept="image/jpg, image/png, image/gif, image/jpeg"/>
               </label>
               <button type="submit" class="btn btn-success"  [disabled]="!selectedFiles">
                 Upload

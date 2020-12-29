@@ -135,7 +135,7 @@ ngAfterViewInit(): void {
         this.progress = 0;
         this.currentFile = this.selectedFiles.item(0);
         const formData = new FormData();
-        formData.append('image_terrain', this.currentFile);
+        formData.append('multipartFile', this.currentFile);
         console.log('formdata', formData);
         this.terrainService.uploadImage(formData, this.terrainId).subscribe(
           event => {

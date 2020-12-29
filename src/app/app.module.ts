@@ -50,6 +50,8 @@ import { AddImmobilierComponent } from './immobilier/add-immobilier/add-immobili
 import { RoleComponent } from './role/role/role.component';
 import { PubportailComponent } from './pubportail/pubportail/pubportail.component';
 import { AddpubportailComponent } from './pubportail/addpubportail/addpubportail.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -100,6 +102,7 @@ import { AddpubportailComponent } from './pubportail/addpubportail/addpubportail
     AdminLayoutModule,
     MaterialModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
