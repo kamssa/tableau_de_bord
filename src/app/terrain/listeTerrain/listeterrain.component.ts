@@ -13,6 +13,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {Categorie} from '../../models/Categorie';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {DialogConfirmService} from '../../helper/dialog-confirm.service';
+import {ImageService} from '../../service/image.service';
 
 @Component({
   selector: 'app-listeterrain',
@@ -25,20 +26,30 @@ export class ListeterrainComponent implements OnInit {
   terrains: Terrain[];
   terrain: Terrain;
   receptacle: any = [];
+  url: any;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private terrainService: TerrainService,
               public dialog: MatDialog, private router: Router,
               private _snackBar: MatSnackBar,
-              private  dialogService: DialogConfirmService) {
+              private  dialogService: DialogConfirmService,
+              private imageService: ImageService) {
   }
   ngOnInit(): void {
     this.terrainService.getAllTerrain().subscribe(data => {
       this.terrains = data.body;
       console.log('Voir ce qui se passe', data.body);
-      if(data.body){
+      if (data.body){
         this.terrains.forEach(value => {
           let opp : Terrain = value;
+          this.imageService.getImageByIdTerrain(opp.id).subscribe(resultat => {
+            console.log('voir image', resultat);
+            this.terrainService.downloadImage(resultat.body.imageId).subscribe(res => {
+              console.log(res.url);
+              opp.path = res.url;
+            });
+
+          });
           this.receptacle.push(opp);
         });
       }
