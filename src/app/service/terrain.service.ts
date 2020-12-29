@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {Resultat} from '../models/resultat';
 import {Categorie} from '../models/Categorie';
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {MessageService} from './message.service';
 import {environment} from '../../environments/environment';
 import {Terrain} from '../models/Terrain';
@@ -54,7 +54,16 @@ export class TerrainService {
 
     return this.http.request(req);
   }
+  downloadImage( publicId: string): Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('Accept', 'image/jpg; charset=utf-8');
+    return this.http.get(`${environment.apiUrl}/api/downloadImg/${publicId}`,{
+       headers: headers,
+       observe: 'response',
+       responseType: 'text'
+    });
 
+  }
   terrainCreer(res: Resultat<Terrain>) {
     console.log('categorie a ete  creer correctement essaie source');
     this.terrainCreerSource.next(res);
