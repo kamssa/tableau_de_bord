@@ -48,7 +48,7 @@ export class FlashService {
 
   }
   uploadImage(formData, id): Observable<HttpEvent<any>> {
-    const req = new HttpRequest('POST', `${environment.apiUrl}/api/imageFlashTerrain/?id=${id}`, formData, {
+    const req = new HttpRequest('POST', `${environment.apiUrl}/api/uploadf/?id=${id}`, formData, {
       reportProgress: true,
       responseType: 'json'
     });

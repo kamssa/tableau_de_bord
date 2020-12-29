@@ -42,14 +42,14 @@ export class ListeterrainComponent implements OnInit {
       if (data.body){
         this.terrains.forEach(value => {
           let opp : Terrain = value;
-          this.imageService.getImageByIdTerrain(opp.id).subscribe(resultat => {
+          /*this.imageService.getImageByIdTerrain(opp.id).subscribe(resultat => {
             console.log('voir image', resultat);
             this.terrainService.downloadImage(resultat.body.imageId).subscribe(res => {
               console.log(res.url);
               opp.path = res.url;
             });
 
-          });
+          });*/
           this.receptacle.push(opp);
         });
       }
