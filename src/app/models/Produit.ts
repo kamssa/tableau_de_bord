@@ -1,7 +1,7 @@
 import {Categorie} from './Categorie';
 import {Ville} from './Ville';
 import {Personne} from './Personne';
-export class Terrains {
+export class Produit {
   constructor(public id ?: number,
               public version?: number,
               public libelle?: string,

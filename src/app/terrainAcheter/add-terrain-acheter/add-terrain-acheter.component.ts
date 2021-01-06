@@ -9,7 +9,7 @@ import {TerrainAcheter} from '../../models/TerrainAcheter';
 import {TerrainAcheterService} from '../../service/terrain-acheter.service';
 import {TerrainService} from '../../service/terrain.service';
 import {MembreService} from '../../service/membre.service';
-import {Terrains} from '../../models/Terrains';
+import {Produit} from '../../models/Produit';
 import {Personne} from '../../models/Personne';
 import {Membre} from '../../models/Membre';
 import {ClientService} from '../../service/client.service';
@@ -24,8 +24,8 @@ export class AddTerrainAcheterComponent implements OnInit {
   achatForm: FormGroup;
   terrainAcheter: TerrainAcheter;
   terrainAchatId: number;
-  terrains: Terrains[];
-  terrain: Terrains;
+  terrains: Produit[];
+  terrain: Produit;
   personnes: Personne[];
   personne: Personne;
 
@@ -34,6 +34,7 @@ export class AddTerrainAcheterComponent implements OnInit {
               private  terrainAcheterService: TerrainAcheterService,
               private terrainService: TerrainService,
               private clientService: ClientService,
+              private membreService: MembreService,
               private location: Location,
               private dialog: MatDialog,
               public dialogRef: MatDialogRef<AddTerrainAcheterComponent>,
@@ -43,7 +44,7 @@ export class AddTerrainAcheterComponent implements OnInit {
     this.terrainService.getAllTerrain().subscribe(data => {
     this.terrains = data.body;
     });
-    this.clientService.getAllClient().subscribe(data => {
+    this.membreService.getAllMembre().subscribe(data => {
       console.log(data.body);
       this.personnes = data.body;
     });

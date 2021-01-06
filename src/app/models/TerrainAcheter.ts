@@ -1,10 +1,10 @@
-import {Terrains} from './Terrains';
+import {Produit} from './Produit';
 import {Personne} from './Personne';
 
 export class TerrainAcheter {
   constructor(public id?: number,
               public version?: number,
-              public terrains?: Terrains,
+              public terrains?: Produit,
               public personne?: Personne) {
   }
 }
