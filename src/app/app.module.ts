@@ -52,6 +52,9 @@ import { PubportailComponent } from './pubportail/pubportail/pubportail.componen
 import { AddpubportailComponent } from './pubportail/addpubportail/addpubportail.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AddMaisonComponent } from './maison/add-maison/add-maison.component';
+import { ListMaisonComponent } from './maison/list-maison/list-maison.component';
+import { UpdateMaisonComponent } from './maison/update-maison/update-maison.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +94,10 @@ import { environment } from '../environments/environment';
     AddImmobilierComponent,
     RoleComponent,
     PubportailComponent,
-    AddpubportailComponent
+    AddpubportailComponent,
+    AddMaisonComponent,
+    ListMaisonComponent,
+    UpdateMaisonComponent
   ],
   imports: [
     AppRoutingModule,

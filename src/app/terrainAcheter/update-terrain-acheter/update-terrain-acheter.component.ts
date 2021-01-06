@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {TerrainAcheter} from '../../models/TerrainAcheter';
 import {TerrainAcheterService} from '../../service/terrain-acheter.service';
-import {Terrains} from '../../models/Terrains';
+import {Produit} from '../../models/Produit';
 import {TerrainService} from '../../service/terrain.service';
 import {Terrain} from '../../models/Terrain';
 
@@ -19,7 +19,7 @@ import {Terrain} from '../../models/Terrain';
 export class UpdateTerrainAcheterComponent implements OnInit {
 
   terrainAcheter: TerrainAcheter;
-  terrains: Terrains;
+  terrains: Produit;
   checked = false;
   updateTerrainForm: FormGroup;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';

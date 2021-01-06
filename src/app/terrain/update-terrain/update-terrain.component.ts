@@ -35,7 +35,8 @@ export class UpdateTerrainComponent implements OnInit {
           description: this.terrain.description,
           type: this.terrain.type,
           categorie: this.terrain.categorie,
-          ville: this.terrain.ville
+          ville: this.terrain.ville,
+          path: this.terrain.path
         });
       });
   }

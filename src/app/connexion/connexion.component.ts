@@ -4,7 +4,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import {Personne} from '../models/Personne';
-
+import jwt_decode from 'jwt-decode';
+import {AdminService} from '../service/admin.service';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
@@ -29,7 +30,8 @@ export class ConnexionComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminService: AdminService
   ) {
     // redirect to home if already logged in
     if (this.authService.currentUserValue) {
@@ -77,7 +79,7 @@ export class ConnexionComponent implements OnInit {
     console.log(admin);
     this.authService.login(admin).subscribe(data => {
         if (data.body){
-          this.snackBar.open('Succès de la connexion!', '', {
+            this.snackBar.open('Succès de la connexion!', '', {
             duration: 3000,
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,

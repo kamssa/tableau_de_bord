@@ -10,6 +10,10 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {DialogConfirmService} from '../../helper/dialog-confirm.service';
 import {MatSnackBar, MatSnackBarHorizontalPosition} from '@angular/material/snack-bar';
+import jwt_decode from 'jwt-decode';
+import {AdminService} from '../../service/admin.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {Admin} from '../../models/Admin';
 
 
 
@@ -25,13 +29,18 @@ export class ListCategorieComponent implements OnInit {
   categorie: Categorie;
   receptacle: any = [];
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  admin: Admin;
+  roles: [];
+  ROLE_ADMIN: any;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private categorieService: CategorieService,
               public dialog: MatDialog,
               private router: Router,
               private  dialogService: DialogConfirmService,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private adminService: AdminService,
+              private helper: JwtHelperService) {
   }
   ngOnInit(): void {
     this.categorieService.getAllCategorie().subscribe(data => {
@@ -67,8 +76,6 @@ export class ListCategorieComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Categorie>(this.receptacle);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-
-
     });
   }
   redirectToUpdate(id: any) {
@@ -91,6 +98,24 @@ export class ListCategorieComponent implements OnInit {
     });
   }
   redirectToDelete(id: any) {
+
+    if(localStorage.getItem('currentUser')) {
+      let token = localStorage.getItem('currentUser');
+      const decoded = this.helper.decodeToken(token);
+      console.log(' Dans la navbar', decoded);
+      this.adminService.getAdminById(decoded.sub).subscribe(res => {
+        console.log('admin', res.body);
+        this.admin = res.body;
+        this.roles = res.body.roles;
+        console.log(this.roles);
+        this.roles.forEach(val => {
+         this.ROLE_ADMIN = val;
+         console.log(this.ROLE_ADMIN);
+       });
+      });
+
+    }
+
     this.dialogService.openConfirmDialog('Voulez-vous vraiment supprimer l\'élément ?')
       .afterClosed().subscribe(res => {
       if (res){

@@ -1,10 +1,10 @@
 import {Terrain} from './Terrain';
 import {Categorie} from './Categorie';
-import {Terrains} from './Terrains';
+import {Produit} from './Produit';
 import {Ville} from './Ville';
 import {Personne} from './Personne';
 
-export class FlashTerrain extends Terrains{
+export class FlashTerrain extends Produit{
   constructor(public id ?: number,
               public version?: number,
               public libelle?: string,
