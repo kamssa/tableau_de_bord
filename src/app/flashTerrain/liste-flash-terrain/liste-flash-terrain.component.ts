@@ -68,7 +68,7 @@ export class ListeFlashTerrainComponent implements OnInit {
     console.log(id);
     this.dialog.open(UpdateFlasTerrainComponent,{
       data: {
-        terrain: id
+        flashTerrain: id
       }
     });
   }
