@@ -24,7 +24,7 @@
                   <mat-label >Selection une personne</mat-label>
                   <mat-select formControlName="nomComplet" (selectionChange)="greetPersonne($event)">
                     <mat-option *ngFor="let v of personnes" [value]="v.id">
-                      {{v.nomComplet}}
+                      {{v.nomComplet}} : {{v.adresse.telephone}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
