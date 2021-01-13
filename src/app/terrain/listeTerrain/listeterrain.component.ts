@@ -36,6 +36,7 @@ export class ListeterrainComponent implements OnInit {
               private imageService: ImageService) {
   }
   ngOnInit(): void {
+
     this.terrainService.getAllTerrain().subscribe(data => {
       this.terrains = data.body;
       console.log('Voir ce qui se passe', data.body);
@@ -95,8 +96,9 @@ export class ListeterrainComponent implements OnInit {
     this.dialogService.openConfirmDialog('Voulez-vous vraiment supprimer l\'élément ?')
       .afterClosed().subscribe(res => {
       if (res){
-        console.log(res);
+        console.log(id);
         this.terrainService.supprimerTerrain(id).subscribe(data => {
+          console.log(data);
           this._snackBar.open('Succès de l\'opération!', '', {
             duration: 3000,
             verticalPosition: 'top',

@@ -19,8 +19,10 @@ export class Terrain extends Produit{
               public abonneGeo?: boolean,
               public unite?: string,
               public note?: string,
+              public prixParMettreCarre?: string,
+              public superficie?: string,
               public type?: string
               ) {
-    super(id, version, libelle, description, prix, path, latitude, longitude, numero, categorie, ville, personne, paye, abonneGeo, unite, note, type);
+    super(id, version, libelle, description, prix, path, latitude, longitude, numero, categorie, ville, personne, paye, abonneGeo, unite, note, prixParMettreCarre, superficie,  type);
   }
 }

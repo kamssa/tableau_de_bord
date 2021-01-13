@@ -18,6 +18,8 @@ export class Produit {
               public abonneGeo?: boolean,
               public unite?: string,
               public note?: string,
+              public prixParMettreCarre?: string,
+              public superficie?: string,
               public type?: string
   ) {
   }
