@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {Resultat} from '../models/resultat';
-import {Categorie} from '../models/Categorie';
+import {map} from 'rxjs/operators';
 import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {MessageService} from './message.service';
 import {environment} from '../../environments/environment';
@@ -17,6 +17,7 @@ export class TerrainService {
   private terrainFiltreSource = new Subject<string>();
   private terrainSupprimeSource = new Subject<Resultat<boolean>>();
 
+  private _refreshNeeded$ = new Subject<void>();
 
 // observables streams
   terrainCreer$ = this.terrainCreerSource.asObservable();
@@ -26,7 +27,9 @@ export class TerrainService {
 
   constructor(private  http: HttpClient, private messageService: MessageService) {
   }
-
+  get refreshNeeded(){
+    return  this._refreshNeeded$;
+  }
   getAllTerrain(): Observable<Resultat<Terrain[]>> {
     return this.http.get<Resultat<Terrain[]>>(`${environment.apiUrl}/api/terrain`);
   }
@@ -43,7 +46,11 @@ export class TerrainService {
     return this.http.get<Resultat<Terrain>>(`${environment.apiUrl}/api/terrain/${id}`);
   }
   supprimerTerrain(id: number): Observable<any> {
-    return this.http.delete(`${environment.apiUrl}/api/terrain/${id}`);
+    return this.http.delete(`${environment.apiUrl}/api/terrain/${id}`)
+      .pipe(map(res => {
+        this._refreshNeeded$.next();
+        return res;
+      }));;
 
   }
   uploadImage(formData, id): Observable<HttpEvent<any>> {

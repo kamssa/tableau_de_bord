@@ -9,6 +9,7 @@ import {ListeDepartementComponent} from '../../departement/liste-departement/lis
 import {ListeDemandeComponent} from '../../demande/liste-demande/liste-demande.component';
 import {ListeTerrainAcheterComponent} from '../../terrainAcheter/liste-terrain-acheter/liste-terrain-acheter.component';
 import {ListeProspectComponent} from '../../prospect/liste-prospect/liste-prospect.component';
+import {ListeMembreComponent} from '../../membre/liste-membre/liste-membre.component';
 
 
 
@@ -23,4 +24,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'demande',   component: ListeDemandeComponent },
     { path: 'terrainAcheter',   component: ListeTerrainAcheterComponent },
     { path: 'prospect',   component: ListeProspectComponent },
+    { path: 'membre',   component: ListeMembreComponent }
 ];

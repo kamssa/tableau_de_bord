@@ -52,6 +52,8 @@ export class AddFlashTerrainComponent implements OnInit {
       libelle: ['', Validators.required],
       description: ['', Validators.required],
       prix: ['', Validators.required],
+      prixParMettreCarre: ['', Validators.required],
+      superficie: ['', Validators.required],
       categorie: this.fb.group({
         id: '',
         version: '',
@@ -80,6 +82,8 @@ export class AddFlashTerrainComponent implements OnInit {
       libelle : formValue.libelle,
       description: formValue.description,
       prix: formValue.prix,
+      prixParMettreCarre: formValue.prixParMettreCarre,
+      superficie: formValue.prixParMettreCarre,
       path: this.selectedFiles.item(0).name,
       categorie: {
         id: this.categorie.id,

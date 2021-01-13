@@ -29,6 +29,7 @@ export class MembreService {
   getAllMembre(): Observable<Resultat<Membre[]>> {
     return this.http.get<Resultat<Membre[]>>(`${environment.apiUrl}/api/membre`);
   }
+
   ajoutEmploye(employe: Employe): Observable<Resultat<Employe>> {
     console.log('methode du service qui ajoute un employe', employe);
     return this.http.post<Resultat<Employe>>(`${environment.apiUrl}/api/employe`, employe);
@@ -36,7 +37,10 @@ export class MembreService {
   getMembreById(id: Membre): Observable<Resultat<Membre>> {
     return this.http.get<Resultat<Membre>>(`${environment.apiUrl}/api/membre/${id}`);
   }
+  supprimerMembre(id: number): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/api/membre/${id}`);
 
+  }
   employeCreer(res: Resultat<Employe>) {
     console.log('Employe a ete  creer correctement essaie source');
     this.employeCreerSource.next(res);
