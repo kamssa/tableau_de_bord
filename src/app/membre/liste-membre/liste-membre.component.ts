@@ -131,7 +131,7 @@ export class ListeMembreComponent implements OnInit {
 
       }
     });
-
+    this.router.navigate(['membre']);
   }
 
 }
