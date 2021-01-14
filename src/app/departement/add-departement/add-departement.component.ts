@@ -39,7 +39,6 @@ export class AddDepartementComponent implements OnInit {
   initForm() {
     this.depForm = this.fb.group({
       libelle: new FormControl('',[Validators.required] ),
-      description: new FormControl(''),
     });
   }
   public hasError = (controlName: string, errorName: string) => {
@@ -56,20 +55,20 @@ export class AddDepartementComponent implements OnInit {
     console.log('voir les valeurs assignés', createDepFormValue.value);
     let  dep : Departement = {
       libelle: createDepFormValue.libelle,
-      description: createDepFormValue.description,
+
     };
 
     this.departementService.ajoutDepartement(dep).subscribe(data => {
-        console.log('categorie', data.body);
+        console.log('departement', data.body);
         this.departement = data.body;
         this.dialogRef.close();
-        this.router.navigate(['departement']);
       }, error => {
         this.location.back();
 
       }
     );
-    // this.categorieForm.reset();
+    this.router.navigate(['departement']);
+
   }
 
 }

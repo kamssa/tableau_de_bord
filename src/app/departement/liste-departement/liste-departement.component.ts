@@ -15,7 +15,7 @@ import {DepartementService} from '../../service/departement.service';
   styleUrls: ['./liste-departement.component.scss']
 })
 export class ListeDepartementComponent implements OnInit {
-  displayedColumns: string[] = ['libelle', 'description', 'update', 'delete'];
+  displayedColumns: string[] = ['libelle', 'update', 'delete'];
   dataSource: MatTableDataSource<Departement>;
   departements: Departement[];
   departement: Departement;
@@ -62,7 +62,7 @@ export class ListeDepartementComponent implements OnInit {
     console.log(id);
     this.dialog.open(UpdateDepartementComponent,{
       data: {
-        categorie: id
+        departement: id
       }
     });
   }
